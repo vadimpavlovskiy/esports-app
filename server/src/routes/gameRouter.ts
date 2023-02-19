@@ -1,8 +1,8 @@
 import express, { Express } from "express";
-import httpGetGameStars from "../controllers/gameController";
+import { httpGetTestApiCall } from "../controllers/gameController";
 
 const gameRouter = express.Router();
 
-gameRouter.get("/game", httpGetGameStars);
+gameRouter.get("/game", httpGetTestApiCall);
 
 export default gameRouter;
