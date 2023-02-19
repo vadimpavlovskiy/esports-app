@@ -1,0 +1,20 @@
+{
+  "name": "esports-app",
+  "version": "1.0.0",
+  "description": "This is the full stack esports-app",
+  "scripts": {
+    "start-project": "npm run dev --prefix client && npm run server --prefix server",
+    "start-server": "npm run server --prefix server",
+    "start-client": "npm run dev --prefix client"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vadimpavlovskiy/esports-app.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vadimpavlovskiy/esports-app/issues"
+  },
+  "homepage": "https://github.com/vadimpavlovskiy/esports-app#readme"
+}
