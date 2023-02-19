@@ -1,3 +1,10 @@
 client/next-env.d.ts
 client/node_modules/
 client/.next
+client/.eslintrc.json
+client/.babelrc
+
+server/node_modules
+server/dist
+server/.eslintrc.js
+server/.env
