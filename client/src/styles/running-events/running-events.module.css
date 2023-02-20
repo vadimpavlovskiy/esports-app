@@ -1,0 +1,11 @@
+.running_events {
+  display: flex;
+  width: 90%;
+  flex-wrap: wrap;
+  background-color: #2b2c31;
+  padding: 2rem;
+
+  border-radius: 2rem;
+
+  justify-content: space-evenly;
+}

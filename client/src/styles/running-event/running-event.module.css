@@ -1,0 +1,40 @@
+.running_event {
+  background-color: #615851;
+  width: 20rem;
+  padding: 1rem;
+  transform: scale(1);
+  border-radius: 2rem;
+  animation-direction: alternate;
+  background-color: #2b2c31;
+
+  margin-top: 1rem;
+}
+
+.running_event:hover {
+  transition-duration: 1000ms;
+  animation-duration: 3s;
+  animation-name: scaleUpAndOut;
+  animation-direction: alternate;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  background-color: #42434a;
+}
+
+.running_event h3 {
+  min-width: 3rem;
+  font-size: 0.75em;
+}
+
+@keyframes scaleUpAndOut {
+  from {
+    transform: scale(1);
+  }
+
+  to {
+    transform: scale(1.05);
+  }
+}
+.beggining_time {
+  font-size: 0.75em;
+  font-style: italic;
+}

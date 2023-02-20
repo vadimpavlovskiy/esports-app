@@ -1,0 +1,22 @@
+.upcoming_event {
+  background-color: red;
+  padding: 1rem;
+  transform: scale(1);
+  border-radius: 2rem;
+  animation-direction: alternate;
+  background-color: #2b2c31;
+}
+
+.upcoming_event:hover {
+  transition-duration: 1000ms;
+  background-color: #42434a;
+}
+
+.upcoming_event h3 {
+  font-size: 1em;
+}
+
+.beggining_time {
+  font-size: 0.75em;
+  font-style: italic;
+}

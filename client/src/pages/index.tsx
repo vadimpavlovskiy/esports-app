@@ -2,26 +2,35 @@ import styles from '../styles/styles.module.css';
 import UpcomingEvents from '../layouts/upcoming-events';
 import { NextPage } from 'next';
 import { ComponentProps } from 'react';
+import { AppProps } from 'next/app';
+import RunningEvents from '../layouts/running-events';
 
 interface IProps {
-  data: Object
+  upcomingData: any,
+  runningData: any
 }
 
-const HomePage: NextPage<IProps> = ({data}) => {
-  
+const HomePage: NextPage<IProps> = (props) => {
     return (
       <div className={styles.test}>
         <h2>Coming Events</h2>
-        <UpcomingEvents data={data}/>
+        <RunningEvents data={props.runningData.data}/>
+        <UpcomingEvents data={props.upcomingData.data}/>
       </div>
     )
   }
   
 export async function getServerSideProps() {
-  const res = await fetch('http://localhost:8000/api/game/');
-  const data = await res.json()
+  const upcoming = await fetch('http://localhost:8000/api/games/upcoming');
+  const running = await fetch('http://localhost:8000/api/games/running');
 
-  return {props: data}
+  const upcomingData = await upcoming.json();
+  const runningData = await running.json();
+
+  return {props:{ 
+    upcomingData,
+    runningData
+   }}
 }
 
 export default HomePage

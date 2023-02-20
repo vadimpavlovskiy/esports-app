@@ -1,0 +1,6 @@
+.upcoming_events {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  gap: 2em;
+}
