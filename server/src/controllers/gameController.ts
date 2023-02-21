@@ -2,6 +2,7 @@ import { AxiosError, isAxiosError } from "axios";
 import {
   getDotaRunningSeries,
   getDotaUpcomingSeries,
+  getDotaSeriesBySlug,
 } from "../models/gameModel";
 
 async function httpGetRunningMatches(req, res) {
@@ -34,5 +35,22 @@ async function httpGetUpcomingMatches(req, res) {
     });
   }
 }
+async function httpGetSeriesBySlug(req, res) {
+  const slug = req.params.slug;
+  const result = await getDotaSeriesBySlug(slug);
 
-export { httpGetRunningMatches, httpGetUpcomingMatches };
+  if (!isAxiosError(result)) {
+    return res.status(200).json({
+      status: "success",
+      data: result,
+    });
+  } else {
+    return res.status(result.response.status).json({
+      status: "failed",
+      statusCode: result.response.status,
+      message: result.response.statusText,
+    });
+  }
+}
+
+export { httpGetRunningMatches, httpGetUpcomingMatches, httpGetSeriesBySlug };

@@ -13,7 +13,6 @@ interface IProps {
 const HomePage: NextPage<IProps> = (props) => {
     return (
       <div className={styles.test}>
-        <h2>Coming Events</h2>
         <RunningEvents data={props.runningData.data}/>
         <UpcomingEvents data={props.upcomingData.data}/>
       </div>

@@ -10,7 +10,7 @@ const RunningEvents = ({data}) => {
             {data.map((event) => {
                 return (
                     <div key={event.id}>
-                         <RunningEvent  id={event.id} name={event.league.name} src={event.league.image_url} begin_at={event.begin_at} end_at={event.end_at}/>
+                         <RunningEvent slug={event.slug}  id={event.id} name={event.league.name} src={event.league.image_url} begin_at={event.begin_at} end_at={event.end_at}/>
                     </div>
                 )
             })}
