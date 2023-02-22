@@ -1,6 +1,8 @@
 import Image from "next/image";
 import { useRouter } from "next/router";
 import {format} from 'date-fns';
+import TournamentsMatches from "../../layouts/tournamens-matches";
+import styles from '../../styles/series/series.module.css';
 
 const SeriesPageSingle = ({data}) => {
     const router = useRouter();
@@ -8,12 +10,20 @@ const SeriesPageSingle = ({data}) => {
     console.log(data.data);
     console.log('====================================');
     return (
-        <div>
+        <div className={styles.serie}>
             <h1>{data.data.league.name}</h1>
             <Image src={data.data.league.image_url} width={700} height={300} alt={data.data.league.name}/>
-            <h2>
+            <p>
                 {data.data.begin_at ? format(new Date(data.data.begin_at), 'MM/dd/yyyy' ) : null} - {data.data.end_at ? format(new Date(data.data.end_at),'MM/dd/yyyy') : 'unknown'}
-            </h2>
+            </p>
+            <h2>Tournaments Matches</h2>
+            {
+                data.data.tournaments.map((tournament) => {
+                    return (
+                        <TournamentsMatches tournament_id={tournament.id} name={tournament.name}/>
+                    )
+                })
+            }
         </div>
     )
 }

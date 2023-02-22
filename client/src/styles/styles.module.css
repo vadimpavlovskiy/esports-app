@@ -4,5 +4,6 @@
   width: 100%;
   background-color: #1a1b20;
   padding: 3em;
-  border-radius: 1em;
+
+  height: 100vh;
 }

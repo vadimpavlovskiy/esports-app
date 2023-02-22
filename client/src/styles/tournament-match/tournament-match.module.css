@@ -1,0 +1,28 @@
+.single_match {
+  display: flex;
+  width: 100%;
+
+  justify-content: space-around;
+  align-items: center;
+
+  background-color: #42434a;
+  border-radius: 2rem;
+
+  color: white;
+}
+.opponent_team {
+  min-width: 300px;
+  padding: 1rem;
+  font-size: 2rem;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1rem;
+  display: flex;
+}
+.score {
+  font-size: 2rem;
+  min-width: 100px;
+
+  display: flex;
+  justify-content: space-between;
+}

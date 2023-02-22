@@ -3,6 +3,7 @@ import {
   getDotaRunningSeries,
   getDotaUpcomingSeries,
   getDotaSeriesBySlug,
+  getDotaSeriesMatches,
 } from "../models/gameModel";
 
 async function httpGetRunningMatches(req, res) {
@@ -52,5 +53,27 @@ async function httpGetSeriesBySlug(req, res) {
     });
   }
 }
+async function httpGetSeriesMatches(req, res) {
+  const tournament_id: Number = req.params.id;
+  const result = await getDotaSeriesMatches(tournament_id);
 
-export { httpGetRunningMatches, httpGetUpcomingMatches, httpGetSeriesBySlug };
+  if (!isAxiosError(result)) {
+    return res.status(200).json({
+      status: "success",
+      data: result,
+    });
+  } else {
+    return res.status(result.response.status).json({
+      status: "failed",
+      statusCode: result.response.status,
+      message: result.response.statusText,
+    });
+  }
+}
+
+export {
+  httpGetRunningMatches,
+  httpGetUpcomingMatches,
+  httpGetSeriesBySlug,
+  httpGetSeriesMatches,
+};
