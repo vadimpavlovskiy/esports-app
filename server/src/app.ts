@@ -3,6 +3,7 @@ import { Express } from "express";
 import morgan from "morgan";
 import gameRouter from "./routes/gameRouter";
 import cors from "cors";
+import teamRouter from "./routes/teamRouter";
 
 const app: Express = express();
 
@@ -15,5 +16,5 @@ app.use(
   })
 );
 
-app.use("/api", gameRouter);
+app.use("/api", gameRouter, teamRouter);
 export default app;

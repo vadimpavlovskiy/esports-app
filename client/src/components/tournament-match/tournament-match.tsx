@@ -23,10 +23,13 @@ const TournamentMatch = ({opponents, results}:ITournamentMatch) => {
             return (
         
         <div className={styles.single_match}>
-            {opponents[1] ? <div className={styles.opponent_team}> 
+            {opponents[1] ? 
+            <Link href={`/teams/${encodeURIComponent(opponents[0].opponent.id)}`}>
+            <div className={styles.opponent_team}> 
                 <Image src={opponents[0].opponent.image_url} alt={opponents[0].opponent.slug} width={50} height={50}/>
                 <p>{opponents[0].opponent.name}</p> 
             </div>
+            </Link>
             : <p>Unknown opponent</p>
     }
             <div className={styles.score}>
@@ -34,10 +37,13 @@ const TournamentMatch = ({opponents, results}:ITournamentMatch) => {
                     <div>{result.score}</div>
                 ))}
             </div>
-            {opponents[1] ?   <div className={styles.opponent_team}>
+            {opponents[1] ?   
+            <Link href={`/teams/${encodeURIComponent(opponents[0].opponent.id)}`}>
+            <div className={styles.opponent_team}>
                 <Image src={opponents[1].opponent.image_url} alt={opponents[1].opponent.slug} width={50} height={50}/>
                 <p>{opponents[1].opponent.name}</p> 
-            </div> : <p>Unknown opponent</p>}
+            </div>
+            </Link> : <p>Unknown opponent</p>}
         </div>
     )
 } else {
