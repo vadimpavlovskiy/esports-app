@@ -4,11 +4,9 @@ import {format} from 'date-fns';
 import TournamentsMatches from "../../layouts/tournamens-matches";
 import styles from '../../styles/series/series.module.css';
 
+
 const SeriesPageSingle = ({data}) => {
     const router = useRouter();
-    console.log('====================================');
-    console.log(data.data);
-    console.log('====================================');
     return (
         <div className={styles.serie}>
             <h1>{data.data.league.name}</h1>

@@ -1,6 +1,6 @@
 .single_match {
-  display: flex;
-  width: 100%;
+  display: inline-flex;
+  min-width: 800px;
 
   justify-content: space-around;
   align-items: center;
