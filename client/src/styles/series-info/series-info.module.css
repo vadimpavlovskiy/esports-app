@@ -1,0 +1,9 @@
+.series_info {
+  display: flex;
+  justify-content: center;
+
+  gap: 4rem;
+}
+.series_info_header {
+  font-size: 32px;
+}

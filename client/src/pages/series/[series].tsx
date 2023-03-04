@@ -1,24 +1,23 @@
 import Image from "next/image";
 import { useRouter } from "next/router";
-import {format} from 'date-fns';
+import LoadingSceleton from "../../components/sceleton-loading/sceleton-loading";
+import SeriesInfo from "../../layouts/series-info";
 import TournamentsMatches from "../../layouts/tournamens-matches";
 import styles from '../../styles/series/series.module.css';
 
 
 const SeriesPageSingle = ({data}) => {
     const router = useRouter();
+    console.log(data.data);
+    
     return (
         <div className={styles.serie}>
-            <h1>{data.data.league.name}</h1>
-            <Image src={data.data.league.image_url} width={700} height={300} alt={data.data.league.name}/>
-            <p>
-                {data.data.begin_at ? format(new Date(data.data.begin_at), 'MM/dd/yyyy' ) : null} - {data.data.end_at ? format(new Date(data.data.end_at),'MM/dd/yyyy') : 'unknown'}
-            </p>
-            <h2>Tournaments Matches</h2>
+           <SeriesInfo data={data.data}/>
+           <h2 className={styles.serie_matches_header}>Tournaments Matches</h2>
             {
                 data.data.tournaments.map((tournament) => {
                     return (
-                        <TournamentsMatches tournament_id={tournament.id} name={tournament.name}/>
+                        <TournamentsMatches anotherTournaments={data.data.tournaments} tournament_id={tournament.id} name={tournament.name}/>
                     )
                 })
             }

@@ -1,45 +1,43 @@
-import { Skeleton } from "@chakra-ui/react";
+import { log } from "console";
 import { useEffect, useState } from "react";
 import LoadingSceleton from "../components/sceleton-loading/sceleton-loading";
 import TournamentMatch from "../components/tournament-match/tournament-match";
 import styles from '../styles/tournament-matches/tournament-matches.module.css';
 
-const TournamentsMatches = ({name, tournament_id}) => {
+const TournamentsMatches = ({name, anotherTournaments, tournament_id}) => {
     const [matches, setMatches] = useState([]);
-    const [loading, setLoaded] = useState(false);
 
     async function fetchData() {
-        const results = await fetch (`http://localhost:8000/api/games/${tournament_id}/matches`);
+        const baseArray = await anotherTournaments.map(async (tournament) => {
+            const results = await fetch (`http://localhost:8000/api/games/${tournament.id}/matches`);
+            const {data} = await results.json();
 
-        const {data} = await results.json();
-
-        const sortedData = data.sort((a,b) => {
-            if(a.begin_at<b.begin_at) {
-                return 1;
-            }
-        });
-        setMatches(sortedData);
+            return data
+        })
+        Promise.all(baseArray).then((val) => setMatches([...matches, val]))
     }
     useEffect(() => {
-        setTimeout(()=> {
             fetchData()
-        }, 2000)
-      
       return () => {
       }
     }, [])
 
-    
+    const currentTime = new Date();
     
     return (
-
         <div className="tournaments-matches">
                     <div className={styles.tournaments_matches_list}>
-                            {matches.length > 0 ?
-                                matches.map((match, index) => (
-                                        <TournamentMatch key={index} opponents={match.opponents} results={match.results}/>
-                                    
-                                ))
+                        <h2>{name}</h2>
+                            {matches && matches.length > 0 ?
+                                matches[0].map((matches, index) => {
+                                        matches.sort((a,b)=>{if(a.begit_at < b.begit_at){return a}})
+                                        console.log(matches);
+                                        
+                                        return matches.map((match, index) => (
+                                             <TournamentMatch currentTime={currentTime.toISOString()} matchTime={match.begin_at} key={index} opponents={match.opponents} results={match.results}/>))
+                                        }
+                                    )
+                                
                                 : <LoadingSceleton />
                             }
                     </div>

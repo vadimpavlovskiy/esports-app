@@ -1,9 +1,6 @@
 import TeamInformation from "../../layouts/team-information";
 
 const TeamsPage = ({data}) => {
-    console.log('====================================');
-    console.log(data);
-    console.log('====================================');
     return (
         <div>
             <TeamInformation data={data.data}/>

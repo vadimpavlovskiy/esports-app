@@ -1,6 +1,12 @@
+.tournaments-matches {
+  display: flex;
+  align-items: center;
+
+  margin-botton: 2rem;
+}
 .tournaments_matches_list {
   display: flex;
   flex-direction: column;
-
+  align-items: center;
   gap: 1rem;
 }

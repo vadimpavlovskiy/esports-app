@@ -1,7 +1,6 @@
 .single_match {
   display: inline-flex;
   min-width: 800px;
-
   justify-content: space-around;
   align-items: center;
 
@@ -11,7 +10,6 @@
   color: white;
 }
 .opponent_team {
-  min-width: 300px;
   padding: 1rem;
   font-size: 2rem;
   align-items: center;
@@ -21,8 +19,9 @@
 }
 .score {
   font-size: 2rem;
-  min-width: 100px;
+  min-width: 50px;
+
+  justify-content: center;
 
   display: flex;
-  justify-content: space-between;
 }

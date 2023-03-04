@@ -1,7 +1,7 @@
 import Image from "next/image";
-import emoji from 'country-to-emoji-flag'
 import PlayersInfo from "./players-info";
 import IPlayer from "../interfaces/player.interface";
+import { Avatar, Box } from "@chakra-ui/react";
 
 interface ITeamData {
     image_url: string;
@@ -17,16 +17,15 @@ interface ITeamInformation {
 }
 
 const TeamInformation = ({data}:ITeamInformation) => {
-    console.log('====================================');
-    console.log(data);
-    console.log('====================================');
     return (
-        <div>
-            <h1>{data.name}</h1>
-            {data.image_url ? <Image src={data.image_url} alt={data.slug} width={300} height={150} /> : null}
+        <Box paddingTop={14} minH={'100vh'} bgColor={`#1a1b20`} color={'white'} display={'flex'} flexDirection={'column'}>
+            <Box display={'flex'} gap={10} justifyContent={'center'} alignItems={"center"}>
+                {data.image_url ? <Avatar backgroundSize={50} src={data.image_url} bgSize={'contain'} size={'xl'}  /> : null}
+                <h1>{data.name}</h1>
+            </Box>
             <h2>Players:</h2>
             <PlayersInfo players={data.players}/>
-        </div>
+        </Box>
     )
 }
 
